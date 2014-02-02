@@ -7,7 +7,7 @@ var animate = window.requestAnimationFrame ||
 	function(callback) {window.setTimeout(callback, 1000/60) };
 	
 	
-// getting 2D context of the canvas element
+// getting the 2D context of the canvas element
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
@@ -27,7 +27,7 @@ var move = function() {
 	animate(move);
 };
 
-// setting the background color and rendering the ball and the players
+// setting the background and rendering the ball and the players
 var render = function() {
 	context.fillStyle = "#FFFFFF";
 	context.fillRect(0, 0, canvas.width, canvas.height);
@@ -57,7 +57,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
 };
 
 // Creating the Ball object
-// the x,y coordinates represent the center of the circle and the radius is 10
+// the x,y coordinates represent the center of the circle and the radius is 8
 function Ball(x, y) {
   this.x = x;
   this.y = y;
@@ -69,6 +69,7 @@ function Ball(x, y) {
 Ball.prototype.render = function() {
   context.beginPath();
   context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+  context.closePath();
   context.fillStyle = "#FF0000";
   context.fill();
 };
@@ -85,7 +86,9 @@ function Paddle(x, y, width, height) {
 
 Paddle.prototype.render = function() {
   context.fillStyle = "#000000";
+  context.beginPath();
   context.fillRect(this.x, this.y, this.width, this.height);
+  context.closePath();
 };
 
 // creating the paddle object for player1 and rendering it
