@@ -11,9 +11,8 @@ var animate = window.requestAnimationFrame ||
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
-// attaching the canvas to the screen and starting the animation when the page loads
+// tarting the animation when the page loads
 window.onload = function() {
-	document.body.appendChild(canvas);
 	animate(move);
 };
 
@@ -106,7 +105,7 @@ function Player2() {
 }
 
 Player2.prototype.render = function() {
-  this.paddle.render();
+	this.paddle.render();
 };
 	
 // creating the ball, player1, and player2 objects
