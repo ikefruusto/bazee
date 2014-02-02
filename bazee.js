@@ -1,6 +1,10 @@
 // This file contains the code for Pong (the game). 
 // February 2014
 
+// Initializing the variables
+var player1_points = 0;
+var player2_points = 0;
+
 // The requestAnimationFrame is used instead of just setTimeout for optimization purposes. For example, 
 // calls won't be sent until a browser tab is active
 var animate = window.requestAnimationFrame ||
@@ -13,6 +17,7 @@ var context = canvas.getContext('2d');
 
 // starting the animation when the page loads
 window.onload = function() {
+	Score();
 	animate(move);
 };
 
@@ -38,21 +43,6 @@ var render = function() {
 // the update function
 var update = function() {
 	ball.update(player1.paddle, player2.paddle);
-};
-
-Ball.prototype.update = function(paddle1, paddle2) {
-	this.x += this.x_speed;
-	this.y += this.y_speed;
-	var top_x = this.x - 8;
-	var top_y = this.y - 8;
-
-	if(this.x - 8 < 8) { 
-		this.x = 16;
-		this.x_speed = -this.x_speed;
-	} else if(this.x + 8 > 792) { 
-		this.x = 784;
-	this.x_speed = -this.x_speed;
-	}
 };
 
 // Creating the Ball object
@@ -107,10 +97,34 @@ function Player2() {
 Player2.prototype.render = function() {
   this.paddle.render();
 };
+
+
+// updating the score
+function Score() {
+	var p = document.getElementById('score');
+	var scoreText = document.createTextNode("Score: " + player1_points + "-" + player2_points);
+	p.appendChild(scoreText);
+	document.body.appendChild(p);
+}
 	
 // creating the ball, player1, and player2 objects
 var ball = new Ball(400, 300);
 var player1 = new Player1();
 var player2 = new Player2();
 
+Ball.prototype.update = function(paddle1, paddle2) {
+	this.x += this.x_speed;
+	this.y += this.y_speed;
+	var top_x = this.x - 8;
+	var top_y = this.y - 8;
+
+	if(this.x - 8 < 8) { 
+		this.x = 16;
+		this.x_speed = -this.x_speed;
+	} else if(this.x + 8 > 792) { 
+		this.x = 784;
+		this.x_speed = -this.x_speed;
+	}
 	
+	
+};
