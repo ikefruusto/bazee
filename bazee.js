@@ -110,7 +110,7 @@ Player2.prototype.render = function() {
 };
 	
 // creating the ball, player1, and player2 objects
-var ball = new Ball(200, 300);
+var ball = new Ball(400, 300);
 var player1 = new Player1();
 var player2 = new Player2();
 
