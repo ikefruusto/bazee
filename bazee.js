@@ -11,7 +11,7 @@ var animate = window.requestAnimationFrame ||
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
-// tarting the animation when the page loads
+// starting the animation when the page loads
 window.onload = function() {
 	animate(move);
 };
@@ -41,36 +41,36 @@ var update = function() {
 };
 
 Ball.prototype.update = function(paddle1, paddle2) {
-  this.x += this.x_speed;
-  this.y += this.y_speed;
-  var top_x = this.x - 8;
-  var top_y = this.y - 8;
+	this.x += this.x_speed;
+	this.y += this.y_speed;
+	var top_x = this.x - 8;
+	var top_y = this.y - 8;
 
-  if(this.x - 8 < 8) { 
-    this.x = 16;
-    this.x_speed = -this.x_speed;
-  } else if(this.x + 8 > 792) { 
-    this.x = 784;
-    this.x_speed = -this.x_speed;
-  }
+	if(this.x - 8 < 8) { 
+		this.x = 16;
+		this.x_speed = -this.x_speed;
+	} else if(this.x + 8 > 792) { 
+		this.x = 784;
+	this.x_speed = -this.x_speed;
+	}
 };
 
 // Creating the Ball object
 // the x,y coordinates represent the center of the circle and the radius is 8
 function Ball(x, y) {
-  this.x = x;
-  this.y = y;
-  this.x_speed = 5;
-  this.y_speed = 0;
-  this.radius = 8;
+	this.x = x;
+	this.y = y;
+	this.x_speed = 5;
+	this.y_speed = 0;
+	this.radius = 8;
 }
 
 Ball.prototype.render = function() {
-  context.beginPath();
-  context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
-  context.closePath();
-  context.fillStyle = "#FF0000";
-  context.fill();
+	context.beginPath();
+	context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+	context.closePath();
+	context.fillStyle = "#FF0000";
+	context.fill();
 };
 
 // Creating the Paddle object
@@ -84,10 +84,10 @@ function Paddle(x, y, width, height) {
 }
 
 Paddle.prototype.render = function() {
-  context.fillStyle = "#000000";
-  context.beginPath();
-  context.fillRect(this.x, this.y, this.width, this.height);
-  context.closePath();
+	context.fillStyle = "#000000";
+	context.beginPath();
+	context.fillRect(this.x, this.y, this.width, this.height);
+	context.closePath();
 };
 
 // creating the paddle object for player1 and rendering it
@@ -96,7 +96,7 @@ function Player1() {
 }
 
 Player1.prototype.render = function() {
-  this.paddle.render();
+	this.paddle.render();
 };
 
 // crating the paddle object for player2 and rendering it
@@ -105,7 +105,7 @@ function Player2() {
 }
 
 Player2.prototype.render = function() {
-	this.paddle.render();
+  this.paddle.render();
 };
 	
 // creating the ball, player1, and player2 objects
